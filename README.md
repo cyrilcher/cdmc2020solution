@@ -25,20 +25,21 @@ Therefore we used 1339 features for building models.
 
 ### Experiments with models
 
-For experiments and performance evaluation we did 0.7/0.3 stratified split for training and hold-out set. Most of our 
-experiments in this task were centered around the family classification task which was a little harder, considering a lot of 
-classes with only one sample in the training set. 
+For experiments and performance evaluation we did 0.7/0.3 stratified split for training and hold-out set (all the 
+preprocessing steps we did after the split). Most of our experiments in this task were centered around the family 
+classification task which was a little harder, considering a lot of classes with only one sample in the training set. 
 
 We used the macro F1 score as our main metric for model selection both for validation and hold-out datasets.
 
-Some of our most noticeable results:  
+Some of our most noticeable results:
+
 - *AutoML*. We used [LightAutoML (LAMA)](https://github.com/sberbank-ai-lab/LightAutoML) model developed in our 
 organization (in closed Beta right now, will go opensource in December). It gave us considerably high scores (0.84) on the 
-hold-out set, but was susceptible to overfitting;
+hold-out set, but was susceptible to overfitting;  
 - Solution based on *Lightgbm*. Gave us standard deviation on cross-validation close to zero (most stable and robust model), 
-but overall lower score (0.8). 
+but overall lower score (0.8).  
 - Most of our models using One-vs-Rest strategy to handle multiple classes, but we also tried *ClassifierChains* method 
-hoping to get a performance boost from hidden dependencies between classes. It also failed to give us better results;
+hoping to get a performance boost from hidden dependencies between classes. It also failed to give us better results;  
 - We tried different *combinations of models*, including stacking and/or blending of Lightgbm, KNN, RandomForest, 
 Logistic regression, Naive Bayes, Multilayer perceptron (feedforward neural net), but did not gain any performance increase.
 
@@ -95,8 +96,8 @@ Among the noticeable experiments we have:
 - *Neural Net* with LSTM on top of the 1-d convolution (image-based approach). Inspired by [this paper](https://arxiv.org/pdf/1807.08265.pdf) we 
 tried to fit 1-d convolutional network on integer bytes representation and feed final layer to LSTM (you can check out 
 our PyTorch implementation at [task_2/convnet.py](task_2/convnet.py)). It gave us reasonable results (~0.8), but mostly 
-failed on rare classes, even with weighted loss and oversampling.
-- *AutoML* (same model as in the first task). Did not gave us reasonable scores (best was around 0.73).
+failed on rare classes, even with weighted loss and oversampling;
+- *AutoML* (same model as in the first task). Did not gave us reasonable scores (best was around 0.73);
 - Different combinations of *classical algorithms*, including RandomForest and GradientBoosting.
 
 ### Best model
