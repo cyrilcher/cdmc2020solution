@@ -59,7 +59,7 @@ def fit_predict_rf(train_df, test_df):
     X_train = train_df.iloc[:,:-4]
     X_test = test_df.iloc[:,:-1]
     y_train = train_df[2495].copy()
-    params = {'n_estimators':250, 'max_depth':None, 'class_weight':None, 'n_jobs':-1, 'random_state':23}
+    params = {'n_estimators':250, 'max_depth':None, 'class_weight':None, 'n_jobs':-1} #123
     model = RandomForestClassifier(**params)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)

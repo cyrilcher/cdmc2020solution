@@ -1,6 +1,5 @@
 import pandas as pd
 import base64
-import joblib
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
 from sklearn.neighbors import KNeighborsClassifier
